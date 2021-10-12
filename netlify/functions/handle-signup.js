@@ -3,9 +3,8 @@ const fetch = require("node-fetch");
 const { NETLIFY_ACCESS_TOKEN, NETLIFY_SLUG } = process.env;
 
 exports.handler = async function (event) {
-  console.log(event)
   const body = JSON.parse(event.body);
-  const { email } = body.payload.data;
+  const { email } = body.data;
   const response = await fetch(
     `https://api.netlify.com/api/v1/${NETLIFY_SLUG}/members?` +
       new URLSearchParams({
